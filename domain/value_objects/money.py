@@ -1,21 +1,19 @@
-from dataclasses import dataclass
-
-@dataclass(frozen=True)
 class Money:
-    amount: float
-    currency: str
+    def __init__(self, amount: float, currency: str):
+        self.amount = amount
+        self.currency = currency
 
-    def add(self, other: "Money") -> "Money":
+    def add(self, other):
         if self.currency != other.currency:
-            raise ValueError("Cannot add money of different currency")
+            raise ValueError("Cannot add different currencies")
         return Money(self.amount + other.amount, self.currency)
-    
-    def sub(self, other: "Money") -> "Money":
+
+    def subtract(self, other):
         if self.currency != other.currency:
-            raise ValueError("Cannot add money of different currency")
-        if self.amount < other.amount:
-            raise ValueError("Cannot subtract more then the available amount")
-        return Money(self.amount - other.amount, self.amount)
-    
-    def __str__(self) -> str:
+            raise ValueError("Cannot subtract different currencies")
+        if other.amount > self.amount:
+            raise ValueError("Insufficient funds")
+        return Money(self.amount - other.amount, self.currency)
+
+    def __repr__(self):
         return f"{self.amount:.2f} {self.currency}"
