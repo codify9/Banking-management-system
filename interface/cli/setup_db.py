@@ -7,7 +7,7 @@ def setup_database():
         conn.execute(
             accounts.insert(),
             [
-                {"account_number": "ACC001", "owner_name": "Alice", "account_type": "savings", "balance": 1000.0, "currency": "USD"},
-                {"account_number": "ACC002", "owner_name": "Bob", "account_type": "checking", "balance": 500.0, "currency": "USD"},
+                {"account_number": "ACC001", "owner_name": "Harsh", "account_type": "savings", "balance": 1000.0, "currency": "USD"},
+                {"account_number": "ACC002", "owner_name": "Ayush", "account_type": "checking", "balance": 500.0, "currency": "USD"},
             ],
         )
